@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "name": "workshop2020",
+  "private": true,
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "nswag": "^13.7.0",
+    "widdershins": "^4.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "sh ../../.githooks/generate-doc.sh"
+    }
+  }
+}
