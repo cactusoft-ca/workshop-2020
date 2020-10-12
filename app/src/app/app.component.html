@@ -1,0 +1,22 @@
+<div *ngIf="moisture$ | async as moisture; else getting" class="wrapper">
+  <div class="blue arnold-wrapper thicc-shadow title">
+    <div>Niveau </div>
+    <div> d'humidité </div>
+    <div> d'Arnold:</div>
+  </div>
+
+  <div class="pink moisture thicc-shadow" fittext [maxFontSize]="300">
+    {{ moisture }}
+  </div>
+</div>
+
+<ng-template #getting>
+  <div class="wrapper">
+    <div class="pink big thicc-shadow">
+      <div>Obtention </div>
+      <div>du </div>
+      <div>niveau </div>
+      <div>d'humidité...</div>
+    </div>
+  </div>
+</ng-template>

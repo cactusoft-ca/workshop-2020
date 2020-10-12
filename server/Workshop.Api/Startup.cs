@@ -15,6 +15,8 @@ namespace Workshop.Api
 {
     public class Startup
     {
+        private readonly string CorsPolicy = "AllOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -43,11 +45,13 @@ namespace Workshop.Api
                 });
 
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+            });
 
-                // Set the comments path for the Swagger JSON and UI.
-                //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                //c.IncludeXmlComments(xmlPath);
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name:
+                    CorsPolicy,
+                    builder => builder.WithOrigins(Configuration.GetValue<string>("AllowedHosts")));
             });
         }
 
@@ -58,6 +62,8 @@ namespace Workshop.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(CorsPolicy);
 
             app.UseHttpsRedirection();
 
