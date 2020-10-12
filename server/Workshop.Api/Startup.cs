@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Workshop.Api.Services;
 
@@ -27,7 +28,11 @@ namespace Workshop.Api
             services.AddControllers();
             services.AddHttpClient();
             services.AddScoped<IMoistureService, MoistureService>();
-
+            services.AddLogging(loggingBuilder =>
+            {
+                var loggingSection = Configuration.GetSection("Logging");
+                loggingBuilder.AddFile(loggingSection);
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("V1", new OpenApiInfo

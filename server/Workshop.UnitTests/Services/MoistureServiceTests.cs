@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging.Abstractions;
 using Moq.Protected;
 using Workshop.Api.Services;
 using Xunit;
@@ -24,7 +25,7 @@ namespace Workshop.UnitTests
                 .Setup(_ => _.CreateClient(It.IsAny<string>()))
                 .Returns(new HttpClient(HttpMessageHandlerMock.Object));
 
-            MoistureService = new MoistureService(HttpClientFactoryMock.Object);
+            MoistureService = new MoistureService(HttpClientFactoryMock.Object, NullLogger<MoistureService>.Instance);
         }
 
         [Fact]

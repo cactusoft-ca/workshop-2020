@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Workshop.Api.Services
 {
@@ -9,10 +10,12 @@ namespace Workshop.Api.Services
         // TODO: Replace hardcoded value with configured value
         private readonly string _moistureEndpoint = "https://arnold-moisture.herokuapp.com/api/moisture";
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ILogger<MoistureService> _logger;
 
-        public MoistureService(IHttpClientFactory httpClientFactory)
+        public MoistureService(IHttpClientFactory httpClientFactory, ILogger<MoistureService> logger)
         {
             _httpClientFactory = httpClientFactory;
+            _logger = logger;
         }
 
         public async Task<int> GetMoisture()
@@ -21,17 +24,20 @@ namespace Workshop.Api.Services
 
             try
             {
+                _logger.LogInformation($"Getting moisture using endpoint {_moistureEndpoint}.");
 
                 var response = await client.GetStringAsync(_moistureEndpoint);
                 if (!int.TryParse(response, out var moisture))
                 {
-                    throw new MoistureInvalidValueException($"Cannot cast {response} to moisture value.");
+                    _logger.LogError($"{response} is not a valid moisture value.");
+                    throw new MoistureInvalidValueException($"{response} is not a valid moisture value.");
                 }
 
                 return moisture;
             }
             catch (HttpRequestException ex)
             {
+                _logger.LogDebug($"An error occured while calling the Moisture Api: {_moistureEndpoint}.");
                 throw new MoistureApiException(_moistureEndpoint, ex);
             }
         }

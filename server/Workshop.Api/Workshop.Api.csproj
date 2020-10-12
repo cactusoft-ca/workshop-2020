@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NReco.Logging.File" Version="1.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
   </ItemGroup>
 
