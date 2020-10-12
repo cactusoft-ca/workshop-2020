@@ -34,7 +34,7 @@ namespace Workshop.Api
                 {
                     Title = "Arnold API",
                     Version = "V1",
-                    Description = "How you doin' Arnold ?"
+                    Description = "How you doin', Arnold ?"
                 });
 
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
