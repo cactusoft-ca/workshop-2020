@@ -5,11 +5,11 @@ using Xunit;
 
 namespace Workshop.IntegrationTests
 {
-    public class LicensesControllerTests : IClassFixture<WebApplicationFactory<Workshop.Api.Startup>>
+    public class LicensesControllerTests : IClassFixture<WebApplicationFactory<Api.Startup>>
     {
-        private readonly WebApplicationFactory<Workshop.Api.Startup> _factory;
+        private readonly WebApplicationFactory<Api.Startup> _factory;
 
-        public LicensesControllerTests(WebApplicationFactory<Workshop.Api.Startup> factory)
+        public LicensesControllerTests(WebApplicationFactory<Api.Startup> factory)
         {
             _factory = factory;
         }

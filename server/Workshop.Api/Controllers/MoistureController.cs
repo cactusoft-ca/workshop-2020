@@ -5,17 +5,16 @@ namespace Workshop.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class HumidityController : ControllerBase
+    public class MoistureController : ControllerBase
     {
-        private readonly ILogger<HumidityController> _logger;
-
-        public HumidityController(ILogger<HumidityController> logger)
+        private readonly ILogger<MoistureController> _logger;
+        public MoistureController(ILogger<MoistureController> logger)
         {
             _logger = logger;
         }
 
         [HttpGet]
-        public int Humidity()
+        public int GetMoisture()
         {
             return 1;
         }
