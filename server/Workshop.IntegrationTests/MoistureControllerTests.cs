@@ -15,8 +15,8 @@ namespace Workshop.IntegrationTests
         }
 
         [Theory]
-        [InlineData("/Humidity")]
-        [InlineData("/humidity")]
+        [InlineData("/Moisture")]
+        [InlineData("/moisture")]
         public async Task Humidity_Always_ReturnsOk(string url)
         {
             // Arrange
@@ -30,7 +30,7 @@ namespace Workshop.IntegrationTests
         }
 
         [Theory]
-        [InlineData("/Humidityy")]
+        [InlineData("/mossture")]
         [InlineData("/what")]
         public async Task Get_InvalidRoute_ReturnsNotFound(string url)
         {

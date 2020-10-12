@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Workshop.Api.Services;
 
 namespace Workshop.Api.Controllers
 {
@@ -7,16 +9,20 @@ namespace Workshop.Api.Controllers
     [Route("[controller]")]
     public class MoistureController : ControllerBase
     {
+        private readonly IMoistureService _moistureService;
         private readonly ILogger<MoistureController> _logger;
-        public MoistureController(ILogger<MoistureController> logger)
+        public MoistureController(IMoistureService moistureService, ILogger<MoistureController> logger)
         {
+            _moistureService = moistureService;
             _logger = logger;
         }
 
         [HttpGet]
-        public int GetMoisture()
+        public async Task<int> GetMoisture()
         {
-            return 1;
+            var moisture = await _moistureService.GetMoisture();
+
+            return moisture;
         }
     }
 }

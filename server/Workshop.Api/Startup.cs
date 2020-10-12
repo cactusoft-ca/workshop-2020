@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Workshop.Api.Services;
 
 namespace Workshop.Api
 {
@@ -24,6 +25,8 @@ namespace Workshop.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddHttpClient();
+            services.AddScoped<IMoistureService, MoistureService>();
 
             services.AddSwaggerGen(c =>
             {
