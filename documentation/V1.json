@@ -2,14 +2,14 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Arnold API",
-    "description": "How you doin' Arnold ?",
+    "description": "How you doin', Arnold ?",
     "version": "V1"
   },
   "paths": {
-    "/Humidity": {
+    "/Moisture": {
       "get": {
         "tags": [
-          "Humidity"
+          "Moisture"
         ],
         "responses": {
           "200": {
