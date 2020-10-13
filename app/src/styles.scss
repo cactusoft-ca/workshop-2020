@@ -2,7 +2,7 @@
 
 /* You can add global styles to this file, and also import other style files */
 body {
-  background-image: url(https://storage.needpix.com/rsynced_images/leaves-tropical-wallpaper-foliage.jpg);
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://storage.needpix.com/rsynced_images/leaves-tropical-wallpaper-foliage.jpg');
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -10,4 +10,27 @@ body {
   padding: 0px;
   font-weight: 700;
   font-family: 'Bree Serif', serif;
+}
+
+.thicc-shadow {
+  text-shadow: 10px 10px #171717, 
+               9px 9px #171719,
+               8px 8px #171719,
+               7px 7px #171719,
+               6px 6px #171719,
+               5px 5px #171719,
+               4px 4px #171719,
+               3px 3px #171719,
+               2px 2px #171719,
+               1px 1px #171719;
+}
+
+.med-shadow {
+  text-shadow: 7px 7px #171719,
+               6px 6px #171719,
+               5px 5px #171719,
+               4px 4px #171719,
+               3px 3px #171719,
+               2px 2px #171719,
+               1px 1px #171719;
 }
