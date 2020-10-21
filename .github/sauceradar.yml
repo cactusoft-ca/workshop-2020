@@ -1,0 +1,50 @@
+# Detects attributes bound to methods
+- files: .*\.html
+  rule: \[(?!.*\bngStyle\b).*\]="[^"]+\([^"]*\)[^"]*" # e.g. [someAttribute]="someMethod(3)"
+  branches: 
+  - develop
+  - feature/*
+  - bugfix/*
+  - hotfix/*
+  comment: |-
+    Il semblerait que tu as bindé un attribut sur une méthode. C'est pas idéal, parce que la méthode va être callée à chaque [change detection cycle](https://blog.thoughtram.io/angular/2016/02/22/angular-2-change-detection-explained.html).
+# Detects usages of !important
+- files: .*\.scss
+  rule: '!important' # e.g. color: red !important;
+  branches: 
+  - develop
+  - feature/*
+  - bugfix/*
+  - hotfix/*
+  comment: |-
+    Est-il possible d'enlever le `!important`?
+# Detects usages of ::ng-deep
+- files: .*\.scss
+  rule: ::ng-deep # e.g. ::ng-deep h1 { color: red; }
+  branches: 
+  - develop
+  - feature/*
+  - bugfix/*
+  - hotfix/*
+  comment: |-
+    `::ng-deep` est [obsolète](https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep). Il faudrait trouver une alternative.
+# Detects potential bugs with fxFlex. Testcases: https://regexr.com/58oo9
+- files: .*\.html
+  rule: 'fxFlex[\s>]' # e.g. <h1 fxFlex>Foo</h1>
+  branches: 
+  - develop
+  - feature/*
+  - bugfix/*
+  - hotfix/*
+  comment: |-
+    Utiliser la forme courte de `fxFlex` cause parfois [des problèmes sur safari](https://stackoverflow.com/questions/59759054/flex-layout-display-problem-with-safari-ios-using-fx-layout-column). Voici [un lien gentil](https://github.com/angular/flex-layout/wiki/fxFlex-API#fxflex-attribute-usages) vers la documentation de fxFlex!  
+# Detect suspicious usings that are commonly mistaken because of their extension methods. Testcases: https://regexr.com/58uvd
+- files: .*\.cs
+  rule: using (Microsoft\.Ajax\.Utilities|Castle\.Core\.Internal|Magnum\.Extensions);
+  branches: 
+  - develop
+  - feature/*
+  - bugfix/*
+  - hotfix/*
+  comment: |-
+    Ce `using` est probablement en lien avec une méthode d'extension qui ne devrait pas être utilisée. La vérification des string vides, pour `IsNullOrWhiteSpace` ou `IsNullOrEmpty` se fait sur la classe `string`, pas sur une instance de `string` (p.ex. string.IsNullOrWhiteSpace("blah")).
