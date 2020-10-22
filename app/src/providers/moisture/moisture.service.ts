@@ -11,7 +11,7 @@ export class MoistureService {
 
   public getMoisture(): Observable<number> {
     return interval(environment.moistureRefreshInterval).pipe(
-      switchMap(() => this.httpClient.get<number>('moisture'))
+      switchMap(() => this.httpClient.get<number>('moisture?format=Percentage'))
     );
   }
 }

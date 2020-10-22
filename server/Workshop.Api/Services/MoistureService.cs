@@ -21,7 +21,7 @@ namespace Workshop.Api.Services
         /// <summary>
         /// Returns a moisture value between 0 and 4095, 4095 meaning very very moist.
         /// </summary>
-        public async Task<int> GetRawMoisture()
+        public async Task<int> GetMoistureRaw()
         {
             using var client = _httpClientFactory.CreateClient();
 
@@ -43,6 +43,11 @@ namespace Workshop.Api.Services
                 _logger.LogDebug($"An error occured while calling the Moisture Api: {_moistureEndpoint}.");
                 throw new MoistureApiException(_moistureEndpoint, ex);
             }
+        }
+
+        public async Task<int> GetMoisturePercentage()
+        {
+            return 0;
         }
 
         public class MoistureInvalidValueException : Exception

@@ -4,6 +4,7 @@ namespace Workshop.Api.Services
 {
     public interface IMoistureService
     {
-        Task<int> GetRawMoisture();
+        Task<int> GetMoistureRaw();
+        Task<int> GetMoisturePercentage();
     }
 }

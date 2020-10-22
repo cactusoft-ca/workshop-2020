@@ -30,36 +30,36 @@ namespace Workshop.UnitTests.Services
         #region GetRawMoisture
 
         [Fact]
-        public async Task GeRawtMoisture_ValidValueAndOk_ReturnsValue()
+        public async Task GetMoistureRaw_ValidValueAndOk_ReturnsValue()
         {
             // Arrange
             SetupMoisture("123");
 
             // Act
-            var actual = await MoistureService.GetRawMoisture();
+            var actual = await MoistureService.GetMoistureRaw();
 
             // Assert
             Assert.Equal(123, actual);
         }
 
         [Fact]
-        public async Task GetRawMoisture_InvalidValueAndOk_Throws()
+        public async Task GetMoistureRaw_InvalidValueAndOk_Throws()
         {
             // Arrange
             SetupMoisture("invalid");
 
             // Act
-            await Assert.ThrowsAsync<MoistureService.MoistureInvalidValueException>(() => MoistureService.GetRawMoisture());
+            await Assert.ThrowsAsync<MoistureService.MoistureInvalidValueException>(() => MoistureService.GetMoistureRaw());
         }
 
         [Fact]
-        public async Task GetRawMoisture_ValidValueBadRequest_Throws()
+        public async Task GetMoistureRaw_ValidValueBadRequest_Throws()
         {
             // Arrange
             SetupMoisture("123", HttpStatusCode.BadRequest);
 
             // Act
-            await Assert.ThrowsAsync<MoistureService.MoistureApiException>(() => MoistureService.GetRawMoisture());
+            await Assert.ThrowsAsync<MoistureService.MoistureApiException>(() => MoistureService.GetMoistureRaw());
         }
 
         #endregion
