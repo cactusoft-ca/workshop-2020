@@ -18,13 +18,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: DIRECTORY
-        run: cd app/
+      
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
             node-version: ${{ matrix.node-version }}
       - name: Install dependencies
+        working-directory: /app/
         run: npm i
+      - name: Build
+        working-directory: /app/
+        run: npm run build
       - name: Run tests
-        run: ng t --browsers ChromeHeadlessNoSandbox --watch=false
+        working-directory: /app/
+        run: npm test --browsers ChromeHeadlessNoSandbox --watch=false
