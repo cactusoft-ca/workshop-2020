@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Workshop.Api.Services;
@@ -23,6 +24,7 @@ namespace Workshop.Api.Controllers
             return await _moistureService.GetMoistureRaw();
         }
 
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public enum MoistureFormat {  Raw = 1, Percentage }
     }
 }
