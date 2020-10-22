@@ -25,6 +25,6 @@ jobs:
             node-version: ${{ matrix.node-version }}
       - name: Run
         working-directory: app/
-        run: npm i
-        run: npm run build
-        run: npm test --browsers ChromeHeadlessNoSandbox --watch=false
+      - run: npm i
+      - run: npm run build
+      - run: npm test --browsers ChromeHeadlessNoSandbox --watch=false
