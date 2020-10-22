@@ -1,0 +1,21 @@
+name: Run Tests
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+
+  pull_request:
+    
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: npm i
+      - name: Run tests
+        run: |
+          npm run test --browsers ChromeHeadlessNoSandbox --watch=false
