@@ -23,8 +23,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
             node-version: ${{ matrix.node-version }}
-      - name: Run
-        working-directory: app/
-      - run: npm i
-      - run: npm run build
-      - run: npm test --browsers ChromeHeadlessNoSandbox --watch=false
+      - name: Install dependencies
+        working-directory: /app/
+        run: npm i
+      - name: Install dependencies
+        working-directory: /app/
+        run: npm run build
+      - name: Run tests
+        working-directory: /app/
+        run: npm run test --watch=false --browsers=ChromeHeadless
