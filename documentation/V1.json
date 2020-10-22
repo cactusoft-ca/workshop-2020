@@ -11,6 +11,15 @@
         "tags": [
           "Moisture"
         ],
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/MoistureFormat"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -39,5 +48,15 @@
       }
     }
   },
-  "components": { }
+  "components": {
+    "schemas": {
+      "MoistureFormat": {
+        "enum": [
+          "Raw",
+          "Percentage"
+        ],
+        "type": "string"
+      }
+    }
+  }
 }
