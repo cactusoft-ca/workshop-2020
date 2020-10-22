@@ -34,3 +34,14 @@ body {
                2px 2px #171719,
                1px 1px #171719;
 }
+::ng-deep {
+  .med-shadow {
+    text-shadow: 7px 7px #171719,
+                 6px 6px #171719,
+                 5px 5px #171719,
+                 4px 4px #171719,
+                 3px 3px #171719,
+                 2px 2px #171719,
+                 1px 1px #171719;
+  }
+}
