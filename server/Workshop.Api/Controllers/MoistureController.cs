@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Workshop.Api.Services;
 
 namespace Workshop.Api.Controllers
@@ -10,11 +9,9 @@ namespace Workshop.Api.Controllers
     public class MoistureController : ControllerBase
     {
         private readonly IMoistureService _moistureService;
-        private readonly ILogger<MoistureController> _logger;
-        public MoistureController(IMoistureService moistureService, ILogger<MoistureController> logger)
+        public MoistureController(IMoistureService moistureService)
         {
             _moistureService = moistureService;
-            _logger = logger;
         }
 
         [HttpGet]
