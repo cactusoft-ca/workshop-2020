@@ -1,21 +1,20 @@
-using System;
-using Moq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging.Abstractions;
+using Moq;
 using Moq.Protected;
 using Workshop.Api.Services;
 using Xunit;
 
-namespace Workshop.UnitTests
+namespace Workshop.UnitTests.Services
 {
     public class MoistureServiceTests
     {
-        IMoistureService MoistureService { get; }
-        Mock<IHttpClientFactory> HttpClientFactoryMock { get; }
-        Mock<HttpMessageHandler> HttpMessageHandlerMock { get; }
+        private IMoistureService MoistureService { get; }
+        private Mock<IHttpClientFactory> HttpClientFactoryMock { get; }
+        private Mock<HttpMessageHandler> HttpMessageHandlerMock { get; }
 
         public MoistureServiceTests()
         {

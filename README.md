@@ -16,3 +16,12 @@ Le succès d'un projet n'en tient pas qu'à la capacités des développeurs/dév
 * Suivre l'état de santé de vos plantes en temps réel
 
 TLDR; Vous allez apprendre à garder en vie vos plantes tout en jasant avec deux bums de Cactusoft.
+
+## How to build?
+
+* Build the server using Visual Studio 2020
+* Start the client by executing `npm run start`
+
+## Contributing
+
+To keep the README as lightweight as possible, the contributing section is available [here](./.github/contributing.md).
