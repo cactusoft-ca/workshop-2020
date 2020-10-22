@@ -14,7 +14,7 @@ jobs:
 
     strategy:
         matrix:
-          node-version: [8.x, 10.x, 12.x]
+          node-version: [10.x]
 
     steps:
       - uses: actions/checkout@v1
@@ -27,5 +27,4 @@ jobs:
       - name: Install dependencies
         run: npm i
       - name: Run tests
-        run: |
-          npm run test --browsers ChromeHeadlessNoSandbox --watch=false
+        run: ng t --browsers ChromeHeadlessNoSandbox --watch=false
