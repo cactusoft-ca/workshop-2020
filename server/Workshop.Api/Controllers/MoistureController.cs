@@ -20,7 +20,7 @@ namespace Workshop.Api.Controllers
         [HttpGet]
         public async Task<int> GetMoisture()
         {
-            return await _moistureService.GetMoisture();
+            return await _moistureService.GetRawMoisture();
         }
     }
 }
