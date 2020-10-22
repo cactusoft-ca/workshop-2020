@@ -18,7 +18,10 @@ namespace Workshop.Api.Services
             _logger = logger;
         }
 
-        public async Task<int> GetMoisture()
+        /// <summary>
+        /// Returns a moisture value between 0 and 4095, 4095 meaning very very moist.
+        /// </summary>
+        public async Task<int> GetRawMoisture()
         {
             using var client = _httpClientFactory.CreateClient();
 

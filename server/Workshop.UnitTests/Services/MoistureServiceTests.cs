@@ -27,38 +27,42 @@ namespace Workshop.UnitTests.Services
             MoistureService = new MoistureService(HttpClientFactoryMock.Object, NullLogger<MoistureService>.Instance);
         }
 
+        #region GetRawMoisture
+
         [Fact]
-        public async Task GetMoisture_ValidValueAndOk_ReturnsValue()
+        public async Task GeRawtMoisture_ValidValueAndOk_ReturnsValue()
         {
             // Arrange
             SetupMoisture("123");
 
             // Act
-            var actual = await MoistureService.GetMoisture();
+            var actual = await MoistureService.GetRawMoisture();
 
             // Assert
             Assert.Equal(123, actual);
         }
 
         [Fact]
-        public async Task GetMoisture_InvalidValueAndOk_Throws()
+        public async Task GetRawMoisture_InvalidValueAndOk_Throws()
         {
             // Arrange
             SetupMoisture("invalid");
 
             // Act
-            await Assert.ThrowsAsync<MoistureService.MoistureInvalidValueException>(() => MoistureService.GetMoisture());
+            await Assert.ThrowsAsync<MoistureService.MoistureInvalidValueException>(() => MoistureService.GetRawMoisture());
         }
 
         [Fact]
-        public async Task GetMoisture_ValidValueBadRequest_Throws()
+        public async Task GetRawMoisture_ValidValueBadRequest_Throws()
         {
             // Arrange
             SetupMoisture("123", HttpStatusCode.BadRequest);
 
             // Act
-            await Assert.ThrowsAsync<MoistureService.MoistureApiException>(() => MoistureService.GetMoisture());
+            await Assert.ThrowsAsync<MoistureService.MoistureApiException>(() => MoistureService.GetRawMoisture());
         }
+
+        #endregion
 
         #region Helpers
 
